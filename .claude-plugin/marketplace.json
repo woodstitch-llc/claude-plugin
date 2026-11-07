@@ -1,0 +1,28 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "woodstitch",
+  "description": "Woodstitch: blinded human listening tests on text-to-speech audio, run by paid listeners, through an MCP server and a skill.",
+  "owner": {
+    "name": "Woodstitch LLC",
+    "email": "support@woodstitch.com",
+    "url": "https://woodstitch.com"
+  },
+  "plugins": [
+    {
+      "name": "woodstitch",
+      "source": "./",
+      "description": "Paid human listeners judge your TTS audio blind: pairwise preference or human-vs-AI detection, with confidence intervals. Adds the Woodstitch MCP tools and a skill that knows when and how to run a listening test.",
+      "category": "testing",
+      "tags": [
+        "tts",
+        "text-to-speech",
+        "human-eval",
+        "listening-test",
+        "voice",
+        "speech",
+        "evaluation",
+        "mcp"
+      ]
+    }
+  ]
+}
