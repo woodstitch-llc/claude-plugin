@@ -4,10 +4,11 @@ Blinded human listening tests on your text-to-speech audio, from inside Claude C
 Paid US listeners judge clips in pairs (which do they prefer?) or one at a time (human or AI?),
 and you get a win rate with a 95% confidence interval back.
 
-The plugin adds the [Woodstitch MCP server](https://pypi.org/project/woodstitch-mcp/) (13 tools over
-the [Woodstitch API](https://woodstitch.com/docs)) and a skill that knows when a listening test is the
-right tool, how to design one that is not underpowered, and the one rule that matters with real money:
-show the quote before starting.
+The plugin adds the [Woodstitch MCP server](https://github.com/woodstitch-llc/woodstitch-mcp) (13 tools over
+the [Woodstitch API](https://woodstitch.com/docs), on [PyPI](https://pypi.org/project/woodstitch-mcp/) and in the
+[MCP registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=com.woodstitch/tts-human-eval) as `com.woodstitch/tts-human-eval`)
+and a `listening-test` skill that knows when a listening test is the right tool, how to design one that is
+not underpowered, and the one rule that matters with real money: show the quote before starting.
 
 ## Install
 

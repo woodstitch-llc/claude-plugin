@@ -1,5 +1,5 @@
 ---
-name: tts-human-eval
+name: listening-test
 description: Run a blinded human listening test on text-to-speech audio through Woodstitch. Use when the user wants real people to judge TTS output - which of two voices, models, checkpoints or settings listeners prefer, or whether synthetic speech passes as human - or asks for "human eval", "listening test", "A/B test my TTS", "MOS" or "does my TTS sound human". Not for automated metrics (WER, speaker similarity, UTMOS), which need no listeners.
 ---
 
