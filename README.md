@@ -12,8 +12,8 @@ show the quote before starting.
 ## Install
 
 ```
-/plugin marketplace add TaylorHawkes/woodstitch-plugin
-/plugin install woodstitch@woodstitch
+/plugin marketplace add woodstitch-llc/claude-plugin
+/plugin install tts-human-eval@woodstitch
 ```
 
 Claude Code will ask for your API key (from <https://woodstitch.com/app/api-keys>). Leave it empty to

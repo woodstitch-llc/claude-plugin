@@ -1,5 +1,5 @@
 {
-  "name": "woodstitch",
+  "name": "tts-human-eval",
   "displayName": "Woodstitch TTS human eval",
   "version": "0.1.0",
   "description": "Paid human listeners judge your text-to-speech audio blind: pairwise preference or human-vs-AI detection, with confidence intervals. Adds the Woodstitch MCP tools and a skill that knows when and how to run a listening test.",
@@ -9,7 +9,7 @@
     "url": "https://woodstitch.com"
   },
   "homepage": "https://woodstitch.com/docs",
-  "repository": "https://github.com/TaylorHawkes/woodstitch-plugin",
+  "repository": "https://github.com/woodstitch-llc/claude-plugin",
   "license": "MIT",
   "icon": "./.claude-plugin/icon.png",
   "keywords": [
