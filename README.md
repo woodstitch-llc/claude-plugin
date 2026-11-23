@@ -17,8 +17,9 @@ not underpowered, and the one rule that matters with real money: show the quote 
 /plugin install tts-human-eval@woodstitch
 ```
 
-The first time Claude uses a Woodstitch tool, it asks you to sign in with Woodstitch: paste an API key
-(from <https://woodstitch.com/app/api-keys>) or create a trial account with $25 of credit in one click.
+Pricing and templates work right away. The first time Claude needs your account (to quote or run a study), it
+asks you to connect: sign in with Google or an emailed link and click Allow. New accounts start with $25 of
+credit, no card. Existing API-key users can choose "Connect with a key" on the same page.
 Nothing is installed or run on your machine; the hosted server at `https://api.woodstitch.com/mcp` does
 the work, and your audio goes only to your own study.
 
