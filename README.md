@@ -17,12 +17,13 @@ not underpowered, and the one rule that matters with real money: show the quote 
 /plugin install tts-human-eval@woodstitch
 ```
 
-Claude Code will ask for your API key (from <https://woodstitch.com/app/api-keys>). Leave it empty to
-browse templates and pricing only. Nothing is installed or run on your machine: the key is sent to
-`api.woodstitch.com` with each request, and your audio goes only to your own study.
+The first time Claude uses a Woodstitch tool, it asks you to sign in with Woodstitch: paste an API key
+(from <https://woodstitch.com/app/api-keys>) or create a trial account with $25 of credit in one click.
+Nothing is installed or run on your machine; the hosted server at `https://api.woodstitch.com/mcp` does
+the work, and your audio goes only to your own study.
 
-Prefer the bare MCP server without the skill? Add `https://api.woodstitch.com/mcp` as an HTTP MCP server
-with the header `Authorization: Bearer ws_live_...`.
+The same server works as a custom connector in the Claude apps: add `https://api.woodstitch.com/mcp`
+and sign in.
 
 ## What it will not do
 
