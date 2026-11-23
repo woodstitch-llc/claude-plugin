@@ -4,9 +4,9 @@ Blinded human listening tests on your text-to-speech audio, from inside Claude C
 Paid US listeners judge clips in pairs (which do they prefer?) or one at a time (human or AI?),
 and you get a win rate with a 95% confidence interval back.
 
-The plugin adds the [Woodstitch MCP server](https://github.com/woodstitch-llc/woodstitch-mcp) (13 tools over
-the [Woodstitch API](https://woodstitch.com/docs), on [PyPI](https://pypi.org/project/woodstitch-mcp/) and in the
-[MCP registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=com.woodstitch/tts-human-eval) as `com.woodstitch/tts-human-eval`)
+The plugin connects Claude to the hosted Woodstitch MCP server at `https://api.woodstitch.com/mcp`
+(13 tools over the [Woodstitch API](https://woodstitch.com/docs); source on
+[GitHub](https://github.com/woodstitch-llc/woodstitch-mcp))
 and a `listening-test` skill that knows when a listening test is the right tool, how to design one that is
 not underpowered, and the one rule that matters with real money: show the quote before starting.
 
@@ -18,9 +18,11 @@ not underpowered, and the one rule that matters with real money: show the quote 
 ```
 
 Claude Code will ask for your API key (from <https://woodstitch.com/app/api-keys>). Leave it empty to
-browse templates and pricing only. Requires `uv` (the server runs with `uvx woodstitch-mcp`).
+browse templates and pricing only. Nothing is installed or run on your machine: the key is sent to
+`api.woodstitch.com` with each request, and your audio goes only to your own study.
 
-Prefer a bare MCP server without the skill? `claude mcp add woodstitch -e WOODSTITCH_API_KEY=ws_live_... -- uvx woodstitch-mcp`
+Prefer the bare MCP server without the skill? Add `https://api.woodstitch.com/mcp` as an HTTP MCP server
+with the header `Authorization: Bearer ws_live_...`.
 
 ## What it will not do
 

@@ -15,7 +15,7 @@ Not offered: MOS, CMOS, MUSHRA or any 1–5 scale. If the user asks for a MOS sc
 ## Flow
 
 1. **Design before spending.** Same text on both sides of every pair, same audio format and bitrate on both sides, one `passage` id per text, `system_a`/`system_b` labels. For a comparison of several systems, one pair per matchup and `per_participant: {"unique_by": ["passage"], "max_per": {"system": 7}}` so no listener hears one system often enough to recognise it. The create response warns when a design is underpowered; relay those warnings.
-2. **Upload** local files with `woodstitch_upload_files`, or use public URLs.
+2. **Audio:** pass public or signed URLs straight to `woodstitch_create_eval` (each clip is fetched once). For local files, upload them first through the API's `POST /v1/files` (multipart `file[]` parts, same Bearer key) and use the returned file ids. The hosted server can't read your disk.
 3. **Create and price** with `woodstitch_create_eval`. This charges nothing. Use `dry_run: true` to price without storing.
 4. **Show the user the quoted total and ask whether to start.** Never skip this.
 5. **Start** with `woodstitch_start_eval(eval_id, user_confirmed_amount_usd=<the quoted total>)`. The confirmed amount is sent as a hard spending ceiling; the API refuses if the quote is higher.

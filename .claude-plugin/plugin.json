@@ -1,7 +1,7 @@
 {
   "name": "tts-human-eval",
   "displayName": "Woodstitch TTS human eval",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Paid human listeners judge your text-to-speech audio blind: pairwise preference or human-vs-AI detection, with confidence intervals. Adds the Woodstitch MCP tools and a skill that knows when and how to run a listening test.",
   "author": {
     "name": "Woodstitch LLC",
@@ -36,12 +36,10 @@
   },
   "mcpServers": {
     "woodstitch": {
-      "command": "uvx",
-      "args": [
-        "woodstitch-mcp"
-      ],
-      "env": {
-        "WOODSTITCH_API_KEY": "${user_config.api_key}"
+      "type": "http",
+      "url": "https://api.woodstitch.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.api_key}"
       }
     }
   }
