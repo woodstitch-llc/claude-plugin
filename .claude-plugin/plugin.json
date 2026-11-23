@@ -25,7 +25,7 @@
   "documentationUrl": "https://woodstitch.com/docs",
   "supportUrl": "https://woodstitch.com/contact",
   "privacyPolicyUrl": "https://woodstitch.com/legal/privacy",
-  "termsOfServiceUrl": "https://woodstitch.com/legal/privacy",
+  "termsOfServiceUrl": "https://woodstitch.com/legal/terms",
   "mcpServers": {
     "woodstitch": {
       "type": "http",
