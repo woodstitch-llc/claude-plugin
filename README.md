@@ -45,8 +45,7 @@ cancelling or deleting.
 
 ## What it will not do
 
-Score audio on a 1–5 MOS scale. Woodstitch runs two tasks only: pairwise preference and
-human-vs-AI detection. Start a paid study without you seeing the price: `woodstitch_start_eval`
+Start a paid study without you seeing the price: `woodstitch_start_eval`
 sends the amount you confirmed as a hard ceiling and the API refuses anything above it.
 
 ## Links

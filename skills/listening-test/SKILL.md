@@ -1,16 +1,18 @@
 ---
 name: listening-test
-description: Run a blinded human listening test on text-to-speech audio through Woodstitch. Use when the user wants real people to judge TTS output - which of two voices, models, checkpoints or settings listeners prefer, or whether synthetic speech passes as human - or asks for "human eval", "listening test", "A/B test my TTS", "MOS" or "does my TTS sound human". Not for automated metrics (WER, speaker similarity, UTMOS), which need no listeners.
+description: Run a blinded human listening test on text-to-speech audio through Woodstitch. Use when the user wants real people to judge TTS output - which of two voices, models, checkpoints or settings listeners prefer, a MOS or CMOS score, or whether synthetic speech passes as human - or asks for "human eval", "listening test", "A/B test my TTS", "MOS", "mean opinion score", "CMOS" or "does my TTS sound human". Not for automated metrics (WER, speaker similarity, UTMOS), which need no listeners.
 ---
 
 # Human listening tests on Woodstitch
 
-Woodstitch pays US listeners to judge audio blind. Two tasks only:
+Woodstitch pays US listeners to judge audio blind. Four templates; pick by the question being asked:
 
-- **Pairwise preference** (`tts_preference.v1`): a listener hears two clips of the same text and picks one. Forced choice, no tie. Use it to choose between two systems, voices, checkpoints or settings.
-- **Detection** (`tts_detect.v1`): a listener hears one clip and says human or AI, with confidence 1–4. Use it to learn whether output passes as real. Needs genuine human recordings of the same passages in the study as the baseline.
+- **Pairwise preference** (`tts_preference.v1`, `pairs`): a listener hears two clips of the same text and picks one. Forced choice by default. The most sensitive way to tell two close systems apart; the default for "which is better".
+- **CMOS** (`tts_cmos.v1`, `pairs`): a listener scores B against A from -3 (much worse) to +3 (much better). Returns a comparative MOS per system pair: how much better, not just which.
+- **MOS** (`tts_mos.v1`, `clips`): a listener scores one clip's naturalness 1–5 (ITU-T P.800 ACR). An absolute score per system, e.g. for a paper or a benchmark table. Give every clip a `system` label.
+- **Detection** (`tts_detect.v1`, `clips`): a listener hears one clip and says human or AI, with confidence 1–4. Use it to learn whether output passes as real. Needs genuine human recordings of the same passages in the study as the baseline.
 
-Not offered: MOS, CMOS, MUSHRA or any 1–5 scale. If the user asks for a MOS score, say so and offer preference instead: "which do people prefer" is usually the question behind "what is the MOS".
+If the user asks for "a MOS score" to decide between systems, MOS works, but say that preference (or CMOS) separates close systems with fewer judgements. Pass `template` to `woodstitch_create_eval`; `question` overrides the default listener question. Play order in pairs is randomised per judgement and mapped back, so results are per system, never per screen position.
 
 ## Flow
 
@@ -20,11 +22,11 @@ Not offered: MOS, CMOS, MUSHRA or any 1–5 scale. If the user asks for a MOS sc
 4. **Show the user the quoted total and ask whether to start.** Never skip this.
 5. **Start** with `woodstitch_start_eval(eval_id, user_confirmed_amount_usd=<the quoted total>)`. The confirmed amount is sent as a hard spending ceiling; the API refuses if the quote is higher.
 6. **Poll** `woodstitch_get_eval` occasionally. First judgements usually land within minutes; a few hundred judgements take hours to days. Interim numbers are provisional: do not stop early because a number crossed a threshold.
-7. **Report** `woodstitch_get_results`: `human_pref/b_win_rate` with its 95% interval (0.5 = indistinguishable; an interval that spans 0.5 does not establish a preference). `woodstitch_export` gives every judgement for the user's own analysis.
+7. **Report** `woodstitch_get_results`. Preference: `human_pref/b_win_rate` with its 95% interval (0.5 = indistinguishable; an interval that spans 0.5 does not establish a preference). MOS: mean score per system; CMOS: mean B-vs-A score per system pair; both with 95% intervals bootstrapped over listeners and passages. `woodstitch_export` gives every judgement for the user's own analysis.
 
 ## Sizing
 
-Rate card: $18 per hour of audio a listener hears, per judgement. 100 pairs of 30-second clips at 5 judgements each is 500 judgements, $150. A large preference gap (50 Elo) needs about 400 judgements for 80% power; a moderate gap (20 Elo) about 2,400. Few pairs means a wide interval regardless of judgements per pair, because the interval is bootstrapped over pairs.
+Rate card: $18 per hour of audio a listener hears, per judgement (MOS and detection price one clip, preference and CMOS two). 100 pairs of 30-second clips at 5 judgements each is 500 judgements, $150. A large preference gap (50 Elo) needs about 400 judgements for 80% power; a moderate gap (20 Elo) about 2,400. Few pairs means a wide interval regardless of judgements per pair, because the interval is bootstrapped over pairs.
 
 ## Where things are
 
