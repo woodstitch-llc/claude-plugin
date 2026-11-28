@@ -55,6 +55,11 @@ Starting a study spends account credit, so keep approval on `woodstitch_start_ev
 
 The Codex package lives in `codex/woodstitch/` (manifest `.codex-plugin/plugin.json`, server config `.mcp.json`).
 
+## Gemini
+
+Gemini CLI: `gemini extensions install https://github.com/woodstitch-llc/gemini-extension`, then `/mcp auth woodstitch`.
+Gemini app: Customize → Connectors → + Custom → `https://api.woodstitch.com/mcp`, sign in, then ask with `@Woodstitch`.
+
 ## What the server's tools can do
 
 Read-only (change nothing, cost nothing): `woodstitch_templates`, `woodstitch_pricing`, `woodstitch_account`,
