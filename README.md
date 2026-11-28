@@ -53,7 +53,7 @@ tools=[{"type": "mcp", "server_label": "woodstitch", "server_url": "https://api.
 
 Starting a study spends account credit, so keep approval on `woodstitch_start_eval` and show the quote to a person first.
 
-The Codex package lives in `codex/woodstitch/` (manifest `.codex-plugin/plugin.json`, server config `.mcp.json`).
+The Codex package lives in `codex/woodstitch/` (manifest `.codex-plugin/plugin.json`, server config `mcp.json`).
 
 ## Gemini
 

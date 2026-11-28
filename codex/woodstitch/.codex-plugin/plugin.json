@@ -24,7 +24,7 @@
     "voice-ai"
   ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
+  "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Woodstitch",
     "shortDescription": "Human TTS & voice AI evals",
