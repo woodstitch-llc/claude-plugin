@@ -1,0 +1,20 @@
+{
+  "name": "woodstitch",
+  "interface": {
+    "displayName": "Woodstitch"
+  },
+  "plugins": [
+    {
+      "name": "woodstitch",
+      "source": {
+        "source": "local",
+        "path": "./codex/woodstitch"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

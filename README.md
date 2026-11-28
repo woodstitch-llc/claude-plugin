@@ -1,8 +1,8 @@
-# Woodstitch plugin for Claude Code
+# Woodstitch plugin for Claude Code and Codex
 
-Blinded human listening tests on your text-to-speech audio, from inside Claude Code.
-Paid US listeners judge clips in pairs (which do they prefer?) or one at a time (human or AI?),
-and you get a win rate with a 95% confidence interval back.
+Blinded human listening tests on your text-to-speech audio, from inside Claude Code, Codex or ChatGPT.
+Paid US listeners compare clips in pairs (which do they prefer? how much better? — preference and CMOS)
+or score them one at a time (MOS naturalness, or human or AI?), and you get results with 95% confidence intervals back.
 
 The plugin connects Claude to the hosted Woodstitch MCP server at `https://api.woodstitch.com/mcp`
 (12 tools over the [Woodstitch API](https://woodstitch.com/docs); source on
@@ -24,6 +24,36 @@ the work, and your audio goes only to your own study.
 
 The same server works as a custom connector in the Claude apps: add `https://api.woodstitch.com/mcp`
 and sign in.
+
+## Codex and ChatGPT (OpenAI)
+
+Codex CLI:
+
+```
+codex plugin marketplace add woodstitch-llc/claude-plugin
+codex plugin add woodstitch@woodstitch
+codex mcp login woodstitch
+```
+
+`codex mcp login` opens the same Woodstitch sign-in (Google, an emailed link, or "Connect with a key").
+In the ChatGPT desktop app this repo can also be added as a plugin marketplace.
+
+ChatGPT developer mode (paid plans): Settings → Apps → Advanced → Developer mode, then create an app with
+the server URL `https://api.woodstitch.com/mcp` and OAuth, and sign in.
+
+OpenAI API (Responses API / Agents SDK): use it as a remote MCP tool with your Woodstitch API key:
+
+```python
+tools=[{"type": "mcp", "server_label": "woodstitch", "server_url": "https://api.woodstitch.com/mcp",
+        "authorization": "<WOODSTITCH_API_KEY>",
+        "require_approval": {"always": {"tool_names": ["woodstitch_start_eval", "woodstitch_cancel_eval", "woodstitch_delete_file"]},
+                             "never": {"tool_names": ["woodstitch_templates", "woodstitch_pricing", "woodstitch_account",
+                                                      "woodstitch_list_evals", "woodstitch_get_eval", "woodstitch_get_results"]}}}]
+```
+
+Starting a study spends account credit, so keep approval on `woodstitch_start_eval` and show the quote to a person first.
+
+The Codex package lives in `codex/woodstitch/` (manifest `.codex-plugin/plugin.json`, server config `.mcp.json`).
 
 ## What the server's tools can do
 

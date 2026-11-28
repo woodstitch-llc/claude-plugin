@@ -1,0 +1,54 @@
+{
+  "name": "woodstitch",
+  "version": "1.0.6",
+  "description": "Blind human listening tests for text-to-speech: vetted US listeners judge your voices or models (preference, MOS, CMOS, human-vs-AI detection) with confidence intervals.",
+  "author": {
+    "name": "Woodstitch LLC",
+    "email": "support@woodstitch.com",
+    "url": "https://woodstitch.com"
+  },
+  "homepage": "https://woodstitch.com/docs",
+  "repository": "https://github.com/woodstitch-llc/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "tts",
+    "text-to-speech",
+    "human-eval",
+    "listening-test",
+    "mos",
+    "mean-opinion-score",
+    "cmos",
+    "voice",
+    "speech",
+    "evaluation",
+    "voice-ai"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Woodstitch",
+    "shortDescription": "Human TTS & voice AI evals",
+    "longDescription": "Woodstitch runs blinded human listening tests on text-to-speech audio. Vetted US listeners hear clips without knowing which system made them, and you get win rates or scores with 95% confidence intervals plus every individual judgement.\n\nWith this plugin you can:\n- Run four test types: pairwise preference (which of two voices, models, checkpoints or settings do listeners prefer?), MOS (a 1–5 naturalness score per system), CMOS (how much better is B than A, −3 to +3) and human-vs-AI detection (does synthetic speech pass as human?)\n- Get an exact quote for a study before it starts\n- Start a study only after you approve its quote, which also sets a hard spending limit\n- Track progress, and pull results and per-judgement exports\n\nWho it's for: teams building or choosing text-to-speech, voice agents and voice products who need real human judgements rather than automated metrics.\n\nResults take minutes to days, depending on study size.\n\nLimitations: audio only (no video); listeners are US-based English speakers; one test template per study.\n\nAudio is played only to the listeners in your study, never published, never used to train models, and never shared with other clients.",
+    "developerName": "Woodstitch LLC",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Set up human listening tests",
+      "Run preference, MOS, CMOS and human-vs-AI tests",
+      "Track studies and get results with confidence intervals",
+      "Export every judgement"
+    ],
+    "websiteURL": "https://woodstitch.com",
+    "supportURL": "https://woodstitch.com/contact",
+    "privacyPolicyURL": "https://woodstitch.com/legal/privacy",
+    "termsOfServiceURL": "https://woodstitch.com/legal/terms",
+    "defaultPrompt": [
+      "What human listening tests can Woodstitch run?",
+      "Set up a blind preference test between two TTS voices.",
+      "Show the results of my latest listening test."
+    ],
+    "brandColor": "#7E22CE",
+    "brandColorDark": "#B57BF0",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

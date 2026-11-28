@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "woodstitch": {
+      "url": "https://api.woodstitch.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            },
+            "baseScopes": [
+              "openid",
+              "email",
+              "woodstitch"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
